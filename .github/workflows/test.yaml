@@ -17,7 +17,9 @@ jobs:
           check-latest: true
           node-version: 14.x
       - name: setup kerberos
-        run: apt-get update -y && apt-get install krb5-user -y
+        run:
+          - sudo apt-get update -y
+          - sudo apt-get install krb5-user -y
       - name: Install Dependencies
         run: npm install
       - name: Test
