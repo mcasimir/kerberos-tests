@@ -5,10 +5,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "mocha index.spec.js"
+    "test": "mocha index.spec.js",
+    "lint": "eslint ."
   },
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [],
   "devDependencies": {
     "eslint": "^7.13.0",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-node": "^11.1.0",
     "execa": "^4.1.0",
     "expect": "^26.6.2",
