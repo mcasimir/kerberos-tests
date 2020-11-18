@@ -3,23 +3,21 @@ on: [push]
 name: CI
 
 jobs:
-  test-posix:
-    name: Unix tests
+  test-linux:
+    name: Linux tests
     strategy:
       fail-fast: false
-      matrix:
-        os: [
-          ubuntu-latest,
-          # macos-latest,
-          # windows-latest
-        ]
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
+    env:
+      DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
           check-latest: true
           node-version: 14.x
+      - name: setup kerberos
+        run: apt-get update -y && apt-get install krb5-user -y
       - name: Install Dependencies
         run: npm install
       - name: Test
