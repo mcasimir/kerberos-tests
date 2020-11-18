@@ -10,7 +10,7 @@ jobs:
       matrix:
         os: [
           ubuntu-latest,
-          macos-latest,
+          # macos-latest,
           windows-latest
         ]
     runs-on: ${{matrix.os}}
@@ -22,11 +22,10 @@ jobs:
           node-version: 14.x
       - name: check docker
         run: docker --version
-
-      # - name: Install Dependencies
-      #   run: npm install
-      # - name: Test
-      #   run: npm test
+      - name: Install Dependencies
+        run: npm install
+      - name: Test
+        run: npm test
 
   # test-windows:
   #   name: Windows tests
