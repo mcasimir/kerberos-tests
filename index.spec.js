@@ -8,9 +8,13 @@ const setHostEntry = util.promisify(hostile.set.bind(hostile));
 const dns = require('dns').promises;
 
 describe('setup', () => {
-  it('has docker', () => {
-    execa('docker', ['--version'], {stdio: 'inherit'});
-    execa('docker-compose', ['--version'], {stdio: 'inherit'});
+  it('has docker', async() => {
+    await execa('docker', ['--version'], {stdio: 'inherit'});
+    await execa('docker-compose', ['--version'], {stdio: 'inherit'});
+  });
+
+  it('has kinit', async() => {
+    await execa('kinit', ['--version']);
   });
 
   it('can change hosts', async() => {
