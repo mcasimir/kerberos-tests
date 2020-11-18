@@ -1,0 +1,19 @@
+{
+  "name": "kerberos-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "mocha index.spec.js"
+  },
+  "devDependencies": {
+    "execa": "^4.1.0",
+    "expect": "^26.6.2",
+    "kerberos": "^1.1.4",
+    "mocha": "^8.2.1",
+    "mongodb": "^3.6.3",
+    "eslint": "^7.13.0",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}
