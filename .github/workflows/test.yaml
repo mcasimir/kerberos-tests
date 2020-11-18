@@ -1,0 +1,45 @@
+on: [push, pull_request]
+
+name: CI
+
+jobs:
+  test-posix:
+    name: Unix tests
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [
+          ubuntu-latest,
+          macos-latest,
+          windows-latest
+        ]
+    runs-on: ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          check-latest: true
+          node-version: 14.x
+      - name: check docker
+        run: docker --version
+
+      # - name: Install Dependencies
+      #   run: npm install
+      # - name: Test
+      #   run: npm test
+
+  # test-windows:
+  #   name: Windows tests
+  #   strategy:
+  #     fail-fast: false
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2-beta
+  #       with:
+  #         check-latest: true
+  #         node-version: 14.x
+  #     - name: Install Dependencies
+  #       run: npm install
+  #     - name: Test
+  #       run: npm test
