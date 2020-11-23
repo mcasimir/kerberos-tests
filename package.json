@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "mocha index.spec.js",
+    "test": "node run.js",
     "lint": "eslint ."
   },
   "engines": {
@@ -22,5 +22,8 @@
     "kerberos": "^1.1.4",
     "mocha": "^8.2.1",
     "mongodb": "^3.6.3"
+  },
+  "dependencies": {
+    "command-exists": "^1.2.9"
   }
 }

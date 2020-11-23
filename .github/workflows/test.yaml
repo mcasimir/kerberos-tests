@@ -18,6 +18,10 @@ jobs:
           node-version: 14.x
       - run: sudo apt-get update -y
       - run: sudo apt-get install krb5-user -y
+      - run: cp etc/krb5-no-canonicalize.conf /etc/krb5.conf
+      - run: docker-compose -f docker/kerberos/docker-compose.yaml up -d
+      - run: sleep 10
+      - run: echo password | kinit 'mongodb.user@EXAMPLE.COM'
       - name: Install Dependencies
         run: npm install
       - name: Test
