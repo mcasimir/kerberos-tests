@@ -1,3 +1,15 @@
+name: Smoke Tests
+
+on:
+  repository_dispatch:
+    types: ['smoke-tests']
+
+jobs:
+  smoke-test-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'hi!'
+
 # on: [push]
 
 # name: CI
