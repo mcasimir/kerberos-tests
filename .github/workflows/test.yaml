@@ -2,8 +2,7 @@ name: Smoke Tests
 
 on:
   repository_dispatch:
-    types: ['smoke-tests']
-
+    types: [builds]
 jobs:
   smoke-test-deb:
     runs-on: ubuntu-latest
