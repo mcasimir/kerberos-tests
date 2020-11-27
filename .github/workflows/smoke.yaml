@@ -2,7 +2,7 @@ name: Smoke Tests
 
 on:
   repository_dispatch:
-    types: smoke-tests
+    types: ['smoke-tests']
 
 jobs:
   smoke-test-deb:
