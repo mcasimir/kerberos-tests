@@ -1,0 +1,19 @@
+{
+  "extends": [
+      "eslint:recommended",
+      "plugin:node/recommended"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 2020
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "mocha/no-exclusive-tests": "error"
+  }
+}
