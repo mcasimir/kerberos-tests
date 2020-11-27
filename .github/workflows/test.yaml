@@ -2,12 +2,12 @@ name: Smoke Tests
 
 on:
   repository_dispatch:
-    types: [builds]
+    types: [smoke-tests]
 jobs:
   smoke-test-deb:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'hi!'
+      - run: echo "${{ github.event.client_payload.urls.linux_deb }}"
 
 # on: [push]
 
