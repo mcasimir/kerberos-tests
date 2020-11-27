@@ -1,44 +1,44 @@
-on: [push]
+# on: [push]
 
-name: CI
+# name: CI
 
-jobs:
-  test-linux:
-    name: Linux tests
-    strategy:
-      fail-fast: false
-    runs-on: ubuntu-latest
-    env:
-      DEBIAN_FRONTEND: noninteractive
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
-        with:
-          check-latest: true
-          node-version: 14.x
-      - run: sudo apt-get update -y
-      - run: sudo apt-get install krb5-user -y
-      - run: cp etc/krb5-no-canonicalize.conf /etc/krb5.conf
-      - run: docker-compose -f docker/kerberos/docker-compose.yaml up -d
-      - run: sleep 10
-      - run: echo password | kinit 'mongodb.user@EXAMPLE.COM'
-      - name: Install Dependencies
-        run: npm install
-      - name: Test
-        run: sudo npm test
+# jobs:
+#   test-linux:
+#     name: Linux tests
+#     strategy:
+#       fail-fast: false
+#     runs-on: ubuntu-latest
+#     env:
+#       DEBIAN_FRONTEND: noninteractive
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2-beta
+#         with:
+#           check-latest: true
+#           node-version: 14.x
+#       - run: sudo apt-get update -y
+#       - run: sudo apt-get install krb5-user -y
+#       - run: cp etc/krb5-no-canonicalize.conf /etc/krb5.conf
+#       - run: docker-compose -f docker/kerberos/docker-compose.yaml up -d
+#       - run: sleep 10
+#       - run: echo password | kinit 'mongodb.user@EXAMPLE.COM'
+#       - name: Install Dependencies
+#         run: npm install
+#       - name: Test
+#         run: sudo npm test
 
-  test-windows:
-    name: Windows tests
-    strategy:
-      fail-fast: false
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
-        with:
-          check-latest: true
-          node-version: 14.x
-      - name: Install Dependencies
-        run: npm install
-      - name: Test
-        run: npm test
+#   test-windows:
+#     name: Windows tests
+#     strategy:
+#       fail-fast: false
+#     runs-on: windows-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2-beta
+#         with:
+#           check-latest: true
+#           node-version: 14.x
+#       - name: Install Dependencies
+#         run: npm install
+#       - name: Test
+#         run: npm test
